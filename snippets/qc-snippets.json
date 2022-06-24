@@ -1,117 +1,356 @@
 {
-    "Static Prop": {
-        "prefix": "$staticprop",
-        "body": [
-            "\\$staticprop"
-        ],
-        "description": "Compile the model as a static prop"
-    },
-    "Material Source": {
-        "prefix": "$cdmaterials",
-        "body": [
-            "\\$cdmaterials \"${1:/}\""
-        ],
-        "description": "Define a material root"
-    },
-    "Model Name": {
-        "prefix": "$modelname",
-        "body": [
-            "\\$modelname \"$1.mdl\""
-        ],
-        "description": "Path and name of the compiled model"
-    },
-    "Body": {
-        "prefix": "$body",
-        "body": [
-            "\\$body \"${1:body}\" \"${2}.${3|dmx,smd|}\""
-        ],
-        "description": "Define the main body mesh"
-    },
-    "Simple Sequence": {
-        "prefix": "$sequence",
-        "body": [
-            "\\$sequence \"${1:idle}\" \"${2}.${3|dmx,smd|}\""
-        ],
-        "description": "Define a simple animation sequence"
-    },
-    "Simple Ragdoll": {
-        "prefix": "$sequence",
-        "body": [
-            "\\$sequence \"${1:ragdoll}\" \"${2}.${3|dmx,smd|}\" activity \"ACT_DIERAGDOLL\" ${4:1}"
-        ],
-        "description": "Define a simple ragdoll sequence"
-    },
-    "Simple Collision Model": {
-        "prefix": "$collisionmodel",
-        "body": [
-            "\\$collisionmodel \"${1}.${2|dmx,smd|}\""
-        ],
-        "description": "Define a non-moving, single-mesh collision model"
-    },
-    "Concave Collision Model": {
-        "prefix": "$collisionmodel",
-        "body": [
-            "\\$collisionmodel \"${1}.${2|dmx,smd|}\"",
-            "{",
-            "\t\\$mass ${3:100}",
-            "\t\\$concave",
-            "}"
-        ],
-        "description": "Define a non-moving, single-mesh collision model with concave parts"
-    },
-    "Texture Group / Family / Skins": {
-        "prefix": "$texturegroup",
-        "body": [
-            "\\$texturegroup \"${1:skins}\"",
-            "{",
-            "\t{ \"${2:material1}\" }",
-            "\t{ \"${3:material2}\" }",
-            "}"
-        ]
-    },
-    "Enable Texture Shadows": {
-        "prefix": "$casttextureshadows",
-        "body": [
-            "\\$casttextureshadows"
-        ]
-    },
-    "Illumination Position": {
-        "prefix": "$illumposition",
-        "body": [
-            "\\$illumposition ${1:0} ${2:0} ${3:0} $4"
-        ]
-    },
-    "Origin Position": {
-        "prefix": "$origin",
-        "body": [
-            "\\$origin ${1:0} ${2:0} ${3:0} ${4:0}"
-        ]
-    },
-    "Scale": {
-        "prefix": "$scale",
-        "body": [
-            "\\$scale ${1:1.0}"
-        ],
-        "description": "Relative scale model by this amount"
-    },
-    "Define Variable": {
-        "prefix": "$definevariable",
-        "body": [
-            "\\$definevariable ${1:variable} \"${2:value}\""
-        ]
-    },
-    "Define Macro": {
-        "prefix": "$definemacro",
-        "body": [
-            "\\$definemacro ${1:MacroName} ${2:Variable1} ${3:Variable2} \\\\\n"
-        ],
-        "description": "Create a macro"
-    },
-    "Continue Macro": {
-        "prefix": "$continue",
-        "body": [
-            "\\$continue ${1:sequence or animation name}"
-        ],
-        "description": "Trick the compiler parser by continue insert commands into a `$animation` or `$sequence`"
-    }
+	"Static Prop": {
+		"prefix": "$staticprop",
+		"body": [
+			"\\$staticprop"
+		],
+		"description": "Compile the model as a static prop"
+	},
+	"Material Source": {
+		"prefix": "$cdmaterials",
+		"body": [
+			"\\$cdmaterials \"${1:/}\""
+		],
+		"description": "Define a material root"
+	},
+	"Model Name": {
+		"prefix": "$modelname",
+		"body": [
+			"\\$modelname \"$1.mdl\""
+		],
+		"description": "Path and name of the compiled model"
+	},
+	"Body": {
+		"prefix": "$body",
+		"body": [
+			"\\$body \"${1:body}\" \"${2}.${3|dmx,smd|}\""
+		],
+		"description": "Define the main body mesh"
+	},
+	"Simple Sequence": {
+		"prefix": "$sequence",
+		"body": [
+			"\\$sequence \"${1:idle}\" \"${2}.${3|dmx,smd|}\""
+		],
+		"description": "Define a simple animation sequence"
+	},
+	"Simple Ragdoll": {
+		"prefix": "$sequence",
+		"body": [
+			"\\$sequence \"${1:ragdoll}\" \"${2}.${3|dmx,smd|}\" activity \"ACT_DIERAGDOLL\" ${4:1}"
+		],
+		"description": "Define a simple ragdoll sequence"
+	},
+	"Simple Collision Model": {
+		"prefix": "$collisionmodel",
+		"body": [
+			"\\$collisionmodel \"${1}.${2|dmx,smd|}\""
+		],
+		"description": "Define a non-moving, single-mesh collision model"
+	},
+	"Concave Collision Model": {
+		"prefix": "$collisionmodel",
+		"body": [
+			"\\$collisionmodel \"${1}.${2|dmx,smd|}\"",
+			"{",
+			"\t\\$mass ${3:100}",
+			"\t\\$concave",
+			"}"
+		],
+		"description": "Define a non-moving, single-mesh collision model with concave parts"
+	},
+	"Texture Group / Family / Skins": {
+		"prefix": "$texturegroup",
+		"body": [
+			"\\$texturegroup \"${1:skins}\"",
+			"{",
+			"\t{ \"${2:material1}\" }",
+			"\t{ \"${3:material2}\" }",
+			"}"
+		]
+	},
+	"Enable Texture Shadows": {
+		"prefix": "$casttextureshadows",
+		"body": [
+			"\\$casttextureshadows"
+		]
+	},
+	"Illumination Position": {
+		"prefix": "$illumposition",
+		"body": [
+			"\\$illumposition ${1:0} ${2:0} ${3:0} $4"
+		],
+		"description": "Set model's LX LY LZ illumination position.\nOptionally you can bind the attachment to a bone."
+	},
+	"Origin Position": {
+		"prefix": "$origin",
+		"body": [
+			"\\$origin ${1:0} ${2:0} ${3:0} ${4:0}"
+		],
+		"description": "Offset the scene origin by LX LY -LZ RZ\nDo note that Z location is inverted."
+	},
+	"Scale": {
+		"prefix": "$scale",
+		"body": [
+			"\\$scale ${1:1.0}"
+		],
+		"description": "Relative scale model by this amount"
+	},
+	"Define Variable": {
+		"prefix": "$definevariable",
+		"body": [
+			"\\$definevariable ${1:variable} \"${2:value}\""
+		],
+		"description": "Declare a $VARIABLE$ command"
+	},
+	"Define Macro": {
+		"prefix": "$definemacro",
+		"body": [
+			"\\$definemacro ${1:MacroName} ${2:Variable1} ${3:Variable2} \\\\\\\\\n"
+		],
+		"description": "Create a macro. TIP.: QC Macros works closer to functions"
+	},
+	"Continue Macro": {
+		"prefix": "$continue",
+		"body": [
+			"\\$continue ${1:SequenceName}"
+		],
+		"description": "Trick the compiler parser by continue insert commands into a $animation or $sequence"
+	},
+	"Up Axis": {
+		"prefix": "$upaxis",
+		"body": [
+			"\\$upaxis \"${1|Z,X,Y,-X,-Y,-Z|}\""
+		],
+		"description": "Set there is considered \"upside\""
+	},
+	"Include / Append File": {
+		"prefix": "$include",
+		"body": [
+			"\\$include \"${1:FileName.qci}\""
+		],
+		"description": "Apped a text file relative to root.\nUsually a .qci or .qc file extension"
+	},
+	"Include a Source Model": {
+		"prefix": "$includemodel",
+		"body": [
+			"\\$includemodel \"${1}.mdl\""
+		],
+		"description": "Register that the said .mdl file to use their $sequence, $animation, $keyvalues, and $collisioncontext if applicable"
+	},
+	"Limit Eye Deflection": {
+		"prefix": "$maxeyedeflection",
+		"body": [
+			"\\$maxeyedeflection \"${1:55}\""
+		],
+		"description": "register the max allowed angle to drive \"Eyes\" and \"EyeRefract\" shader"
+	},
+	"BodyGroup": {
+		"prefix": "$bodygroup",
+		"body": [
+			"\\$bodygroup \"${1:body}\"\n{",
+			"\tstudio \"${2}.${3|dmx,smd|}\"\n}"
+		],
+		"description": "Define body mesh groups"
+	},
+	"Max Studio": {
+		"prefix": "studio",
+		"body": [
+			"studio \"${1}.${2|dmx,smd|}\""
+		],
+		"description": "Add more groups to a $bodygroup"
+	},
+	"Model": {
+		"prefix": "$model",
+		"body": [
+			"\\$model ${1:Name}\"${2:FileName}.${3|dmx,smd|}\""
+		],
+		"description": "Add a main $model mesh"
+	},
+	"Eye Position": {
+		"prefix": "$eyeposition",
+		"body": [
+			"\\$eyeposition ${1:0}\"${2:0}.${3:70}\""
+		],
+		"description": "Set position for AI \"eye\" attachment while out of the PVS"
+	},
+	"Force Phoneme Crossfade": {
+		"prefix": "$forcephonemecrossfade",
+		"body": [
+			"\\$forcephonemecrossfade"
+		],
+		"description": "Force smooth VTA blend between shape/flex interpolations"
+	},
+	"Set Contents": {
+		"prefix": "$contents",
+		"body": [
+			"\\$contents \"${1|grate,monster,notsolid,solid,ladder|}\""
+		],
+		"description": "Force smooth VTA blend between shape/flex interpolations"
+	},
+	"Ambient Boost": {
+		"prefix": "$ambientboost",
+		"body": [
+			"\\$ambientboost"
+		],
+		"description": "Indicates the model be rendered with the ambient boost heuristic. \n This may prevent the model to become too dark"
+	},
+	"Collapse Bones": {
+		"prefix": "$collapsebones",
+		"body": [
+			"\\$collapsebones"
+		],
+		"description": "Allow removal of all bones that aren't connected to vertices, attachment points, ik rules, or don't animate"
+	},
+	"Always Collapse Bones": {
+		"prefix": "$alwayscollapse",
+		"body": [
+			"\\$alwayscollapse \"${1:BoneName}\""
+		],
+		"description": "Forces collapses the named bone. Vertices or attachment points that are connected to the bone are reconnected to the bone's parent"
+	},
+	"Agressive Collapse Bones": {
+		"prefix": "$collapsebonesagressive",
+		"body": [
+			"\\$collapsebonesagressive \"${1:BoneName}\""
+		],
+		"description": "Force the declared bone to collapse/removeal and literal translate weights and attachments to the parent bone"
+	},
+	"Create / Define a Bone": {
+		"prefix": "$definebone",
+		"body": [
+			"\\$definebone \"${1:BoneName}\" \"${2:ParentBone}\" ${3:0} ${4:0} ${5:0} ${6:0} ${7:0} ${8:0} ${9:0} ${10:0} ${11:0} ${12:0} ${13:0} ${14:0}"
+		],
+		"description": "Create / Declare a new or existing bone. \n\tSyntax: $definebone \"Bone\" \"ParentBone\" (LX) (LY) (LZ) (RX) (RY) (RZ) (FixupLX) (FixupLY) (FixupLZ) (FixupRX) (FixupRY) (FixupRZ)\n\n\"Fixup\" parameters are all optionals"
+	},
+	"Preserve a Bone": {
+		"prefix": "$bonemerge",
+		"body": [
+			"\\$bonemerge \"${1:BoneName}\""
+		],
+		"description": "Flag a bone to be not removed by optimizations"
+	},
+	"Force a Bone Hierarchy": {
+		"prefix": [
+			"$hierarchy",
+			"$heirarchy"
+		],
+		"body": [
+			"\\$hierarchy \"${1:BoneName}\" \"${2:ParentBone}\""
+		],
+		"description": "Set a forced hierarchy"
+	},
+	"Force Standard ValveBiped Bone Hierarchy": {
+		"prefix": [
+			"$hierarchy",
+			"$heirarchy"
+		],
+		"body": [
+			"\\$hierarchy \"ValveBiped.Bip01_Pelvis\"     \"\"",
+			"\\$hierarchy \"ValveBiped.Bip01_L_Thigh\"    \"ValveBiped.Bip01_Pelvis\"",
+			"\\$hierarchy \"ValveBiped.Bip01_R_Thigh\"    \"ValveBiped.Bip01_Pelvis\"",
+			"\\$hierarchy \"ValveBiped.Bip01_L_Clavicle\" \"ValveBiped.Bip01_Spine4\"",
+			"\\$hierarchy \"ValveBiped.Bip01_R_Clavicle\" \"ValveBiped.Bip01_Spine4\"",
+			"\\$root \"ValveBiped.Bip01_Pelvis\""
+		],
+		"description": "Set a forced hierarchy"
+	},
+	"Force Bone Realingment": {
+		"prefix": "$realignbones",
+		"body": [
+			"\\$realignbones"
+		],
+		"description": "Forces all the bones to reorient themselves. (if possible) so that their longest axis is along their X axis"
+	},
+	"Set Root Bone": {
+		"prefix": "$root",
+		"body": [
+			"\\$root \"${1|BoneName,ValveBiped.Bip01_Pelvis,bip_pelvis,bip01_pelvis|}\""
+		],
+		"description": "Force bone as root. \n\nThe root bone is used for all movement and rotation calculations"
+	},
+	"Rename a Single Bone": {
+		"prefix": "$renamebone",
+		"body": [
+			"\\$renamebone \"${1:Current}\" \"${2:New}\""
+		],
+		"description": "Rename a already existing bone to a new name.\n\nTIP: use at end of your QC"
+	},
+	"Rename a Single Material": {
+		"prefix": "$renamematerial",
+		"body": [
+			"\\$renamematerial \"${1:Current}\" \"${2:New}\""
+		],
+		"description": "Rename a already existing material to a new name.\n\nTIP: use at end of your QC"
+	},
+	"Auto Origin Center": {
+		"prefix": "$autocenter",
+		"body": [
+			"\\$autocenter"
+		],
+		"description": "Aligns the model's $origin to the center of its bounding box ($bbox) and creates an attachment point called \"placementOrigin\" where its $origin used to be"
+	},
+	"Set / Define Bounding Box": {
+		"prefix": "$bbox",
+		"body": [
+			"\\$bbox ${1:-20} ${2:20} ${3:0} ${4:-20} ${5:20} ${6:75}"
+		],
+		"description": "Creates an axis-aligned bounding box used by the AI to detect collisions with the world, mostly for movement purposes"
+	},
+	"Skip Hitbox Creation": {
+		"prefix": "$skipboneinbbox",
+		"body": [
+			"\\$skipboneinbbox"
+		],
+		"description": "Avoid create $hbox if out of $bbox coordintes"
+	},
+	"Set / Define Clipping Box": {
+		"prefix": "$cbox",
+		"body": [
+			"\\$cbox ${1:0} ${2:0} ${3:0} ${4:0} ${5:0} ${6:0}"
+		],
+		"description": "Creates an clipping bounding box for the model. This box is used for the culling of models in the game for optimization.\n\nTIP: If set all parameters are zero, it uses the $bbox coordinates"
+	},
+	"Define / Declare Sequence": {
+		"prefix": "$declaresequence",
+		"body": [
+			"\\$declaresequence \"${1:SequenceName}\""
+		],
+		"description": "Forward declares a sequence that aren't locally declared"
+	},
+	"Render Model in Double Pass": {
+		"prefix": "$mostlyopaque",
+		"body": [
+			"\\$mostlyopaque"
+		],
+		"description": "Causes the model to be rendered in two passes: The first pass renders only the opaque portions of the model, and the second pass renders only the translucent portion of the model\n\n Tip: Using either $mostlyopaque or $opaque on all models is good form, as it prevents odd lighting errors and visual artifacts with shadows"
+	},
+	"Render Model in Single Pass": {
+		"prefix": "$opaque",
+		"body": [
+			"\\$opaque"
+		],
+		"description": "Causes the model to be assumed to be opaque with respect to its sorting against all other objects in the scene. Use this in cases where only a small portion of the model is translucent (hair, eyes, glasses, etc.) so if there are any sorting issues, it won't matter\n\n Tip: Using either $mostlyopaque or $opaque on all models is good form, as it prevents odd lighting errors and visual artifacts with shadows"
+	},
+	"Force Bone Lengths": {
+		"prefix": "$lockbonelengths",
+		"body": [
+			"\\$lockbonelengths"
+		],
+		"description": "Force all locally animations have same bone lenghts as the first declared skeleton"
+	},
+	"Unlock Definebones": {
+		"prefix": "$unlockdefinebones",
+		"body": [
+			"\\$unlockdefinebones"
+		],
+		"description": "Make the compile parser use the first definition found in any of the source files specified in the QC"
+	},
+	"Maximum Allowed Vertices": {
+		"prefix": "$maxverts",
+		"body": [
+			"\\$maxverts \"${1:65530}\""
+		],
+		"description": "Define the maximum number of vertices allowed in each of the model's meshes"
+	}
 }
