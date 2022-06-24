@@ -3,8 +3,11 @@
 	"name": "Valve Material Type",
 	"scopeName": "source.kv.vmt",
     "patterns": [
-        {
-			"include": "source.kv#keyvalue"
+      {
+			"include": "source.qc#keyvalue"
+		},
+		{
+			"include": "source.qc#command"
 		},
 		{
 			"include": "source.kv#object"
@@ -22,7 +25,7 @@
 			"include": "source.kv#stringQuoted"
 		},
 		{
-			"include": "source.kv#stringUnquoted"
+			"include": "source.qc#stringUnquoted"
 		}
 	]
 }
